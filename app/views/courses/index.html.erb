@@ -1,0 +1,8 @@
+<h3> All Courses and Students</h3>
+
+<% @courses.each do |course| %>
+Name: <%= course.name %><br>
+Students - <br><% course.students.each do |student| %>
+<%= link_to student.name, student_path(student) %><br>
+  <%end%>
+<%end%>
