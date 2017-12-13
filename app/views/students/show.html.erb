@@ -2,6 +2,11 @@
 
 Name: <%= @student.name %><br>
 
+<% @student.courses.each do |course| %>
+Courses: <%= course.name %>
+<% end %>
+
+
 <h4> Addresses for <%= @student.name %> </h4>
  <% @student.addresses.each do |address| %>
 description: <%= address.description %><br>

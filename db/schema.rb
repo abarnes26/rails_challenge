@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213210858) do
+ActiveRecord::Schema.define(version: 20171213213356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,22 @@ ActiveRecord::Schema.define(version: 20171213210858) do
     t.integer "zip"
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "course_id", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_students_on_course_id"
   end
 
   add_foreign_key "addresses", "students"
   add_foreign_key "addresses", "students", column: "students_id"
+  add_foreign_key "students", "courses"
 end
