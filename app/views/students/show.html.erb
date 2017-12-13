@@ -4,5 +4,6 @@ Name: <%= @student.name %><br>
 
 <h6><%= link_to "delete", student_path(@student), method: :delete %></h6><br>
 
+<br><%= link_to "Create a New Student", new_student_path %>
 
 <br><%= link_to "Back to All Students", students_path %>
