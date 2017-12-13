@@ -4,14 +4,15 @@ Name: <%= @student.name %><br>
 
 <h4> Addresses for <%= @student.name %> </h4>
  <% @student.addresses.each do |address| %>
-description: <%= address.description %>
-street: <%= address.street %>
-city:  <%= address.city %>
-state: <%= address.state %>
-zipcode: <%= address.zip %>
+description: <%= address.description %><br>
+street: <%= address.street %><br>
+city:  <%= address.city %><br>
+state: <%= address.state %><br>
+zipcode: <%= address.zip %><br><br>
+<%= link_to "delete address", student_address_path(@student, address), method: :delete %>
 <%end%>
 
-<%= link_to "Add New Address for #{@student.name}", new_student_address_path%>
+<br><%= link_to "Add New Address for #{@student.name}", new_student_address_path(@student)%>
 
 <h6><%= link_to "delete student", student_path(@student), method: :delete %></h6><br>
 
