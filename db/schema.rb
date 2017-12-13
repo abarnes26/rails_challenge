@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213204611) do
+ActiveRecord::Schema.define(version: 20171213210858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20171213204611) do
     t.string "state"
     t.integer "zip"
     t.bigint "students_id"
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_addresses_on_student_id"
     t.index ["students_id"], name: "index_addresses_on_students_id"
   end
 
@@ -37,5 +39,6 @@ ActiveRecord::Schema.define(version: 20171213204611) do
     t.string "name"
   end
 
+  add_foreign_key "addresses", "students"
   add_foreign_key "addresses", "students", column: "students_id"
 end
